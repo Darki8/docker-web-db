@@ -1,6 +1,14 @@
 -- init.sql
-CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
-USE ${MYSQL_DATABASE};
+
+-- Create user and Permissions
+CREATE USER 'BeispielUser'@'localhost' IDENTIFIED BY 'BeispielPasswort';
+
+
+
+
+
+CREATE DATABASE IF NOT EXISTS RetzepteDB;
+USE RetzepteDB;
 
 CREATE TABLE IF NOT EXISTS info (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,8 +17,8 @@ CREATE TABLE IF NOT EXISTS info (
 );
 
 -- Grant the user rights to create databases
-GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+-- GRANT ALL PRIVILEGES ON *.* TO 'BeispielUser'@'%' WITH GRANT OPTION;
+-- FLUSH PRIVILEGES;
 
 
 CREATE DATABASE IF NOT EXISTS RetzepteDB;

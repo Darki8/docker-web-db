@@ -11,6 +11,7 @@ services:
     restart: always
     container_name: "mysql"
     image: mysql:latest
+    command: ["--mysql-native-password=ON"]
     ports:
       - 3306:3306
     env_file:
@@ -21,8 +22,9 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - ./mysql-data:/var/lib/mysql
-      - ./mysql-init:/docker-entrypoint-initdb.d
+    #  - ./mysql-data:/var/lib/mysql
+      - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
+      - ./.env:/app/.env
     networks:
       - backend
 
