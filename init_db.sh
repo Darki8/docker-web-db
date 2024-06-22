@@ -1,9 +1,12 @@
 #!/bin/bash
 set -e
-set -x
 
 # Source the.env file (assuming it's located at /app/.env inside the container)
 source /app/.env
+DB_USER=${MYSQL_USER}
+DB_PASSWORD=${MYSQL_PASSWORD}
+
+mysql -u "${DB_USER}" -p"${DB_PASSWORD}" -e "CREATE DATABASE IF NOT EXISTS Test01;"
 
 # Create SQL statements using environment variables
 QUERY1="CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
