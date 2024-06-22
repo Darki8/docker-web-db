@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipes</title>
+    <style>
+      /* Add some basic styling to make the page look decent */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      /* Create a grid container to hold the recipes */
+      .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+      }
+
+      /* Style each recipe item */
+      .recipe-item {
+        background-color: #f7f7f7;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Make the recipe title clickable */
+      .recipe-item h2 {
+        cursor: pointer;
+      }
+
+      /* Add some hover effects to make the recipe items more interactive */
+      .recipe-item:hover {
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* image style */
+      img {
+        border-radius: 20px;
+        height: 200px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Recipes</h1>
+    <div class="recipe-grid">
+    {% for recipe in data %}
+      <div class="recipe-item">
+        <img src="{{ recipe[2] }}" alt="{{ recipe[1] }}">
+        <h2>{{ recipe[1] }}</h2>
+        <h2><a href="/recipe/{{ recipe[0] }}">View Recipe</a></h2>
+      </div>
+    {% endfor %}
+    </div>
+  </body>
+</html>
