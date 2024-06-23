@@ -4,8 +4,11 @@ services:
     build: .
     ports:
       - 5000:5000
+    volumes:
+      - .:/workspace:cached
     networks:
       - backend
+    
 
   mysql:
     restart: always
@@ -23,8 +26,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
     #  - ./mysql-data:/var/lib/mysql
-      - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
-      - ./.env:/app/.env
+      - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh:ro
+    #  - ./scripts:/docker-entrypoint-initdb.d
     networks:
       - backend
 
