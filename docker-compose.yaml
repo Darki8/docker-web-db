@@ -23,8 +23,12 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
     #  - ./mysql-data:/var/lib/mysql
-      - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh:ro
-      - ./.env:/app/.env
+    - type: bind
+      source: ./init_db.sh
+      target: /docker-entrypoint-initdb.d/init_db.sh
+    - type: bind
+      source: ./.env
+      target: /app/.env
     networks:
       - backend
 
