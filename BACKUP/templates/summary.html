@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summary</title>
+  </head>
+  <body>
+    <h1>Summary</h1>
+    <ul>
+    {% for row in data %}
+      <li>
+        First Name: {{ row[0] }}<br>
+        Last Name: {{ row[1] }}<br>
+        Phone Number: {{ row[2] }}<br>
+      </li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
