@@ -2,7 +2,7 @@
 	"name": "APP",
 	"dockerComposeFile": "docker-compose.yaml",
 	"service": "web",
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/code",
 	"forwardPorts": [5000],
 	"shutdownAction": "stopCompose",
 	"customizations": {
